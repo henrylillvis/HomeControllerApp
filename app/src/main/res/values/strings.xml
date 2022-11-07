@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">AndroidApp</string>
+
+    <!-- Fragments ID: text Titles Poistetaan tarvittaessa -->
+    <string name="home_id_text">Tämä on home fragment</string>
+    <string name="control_id_text">Tämä on control fragment</string>
+    <string name="log_id_text">Tämä on log fragment</string>
+
+    <!-- Home fragment strings -->
+
+
+    <!-- Settings fragment strings -->
+
+    <!-- Preference Headers -->
+    <string name="messages_header">Messages</string>
+    <string name="user_header">Käyttäjä</string>
+    <string name="home_header">Koti</string>
+    <string name="server_header">Palvelin</string>
+    <string name="notifications_header">Ilmoitukset</string>
+    <string name="theme_header">Teema</string>
+
+    <!-- Preferences Titles -->
+    <string name="signature_title">Nimi</string>
+    <string name="home_title">Nimi tai osoite</string>
+    <string name="server_title">IP-osoite</string>
+    <string name="theme_title">Yöteema</string>
+    <string name="reply_title">Default reply action</string>
+    <string name="notifications_title">Sähköposti</string>
+
+    <!-- Control fragment strings -->
+
+    <!-- Log fragment strings  -->
+
+
+</resources>

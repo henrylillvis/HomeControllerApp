@@ -1,0 +1,49 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/user_header"
+        app:icon="@drawable/ic_baseline_person_24">
+
+        <EditTextPreference
+            app:key="signature"
+            app:title="@string/signature_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/home_header"
+        app:icon="@drawable/ic_baseline_home_24">
+
+        <EditTextPreference
+            app:key="home_signature"
+            app:title="@string/home_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/server_header"
+        app:icon="@drawable/ic_baseline_computer_24">
+        <EditTextPreference
+            app:key="server_signature"
+            app:title="@string/server_title"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/theme_header"
+        app:icon="@drawable/ic_baseline_color_lens_24">
+        <SwitchPreferenceCompat
+            app:key="theme"
+            app:title="@string/theme_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/notifications_header"
+        app:icon="@drawable/ic_baseline_sync_24">
+
+        <SwitchPreferenceCompat
+            app:key="sync"
+            app:title="@string/notifications_title" />
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>
