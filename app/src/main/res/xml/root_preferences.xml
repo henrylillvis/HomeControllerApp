@@ -24,6 +24,7 @@
         app:icon="@drawable/ic_baseline_computer_24">
         <EditTextPreference
             app:key="server_signature"
+            app:defaultValue="@string/default_address"
             app:title="@string/server_title"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>

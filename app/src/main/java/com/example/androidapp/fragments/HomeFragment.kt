@@ -1,6 +1,7 @@
 package com.example.androidapp.fragments
 
 import android.os.Bundle
+import android.util.Log.d
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View

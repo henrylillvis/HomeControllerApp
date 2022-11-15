@@ -28,6 +28,7 @@
     <string name="notifications_title">Sähköposti</string>
 
     <!-- Control fragment strings -->
+    <string name="default_address">127.0.0.1</string>
 
     <!-- Log fragment strings  -->
 
