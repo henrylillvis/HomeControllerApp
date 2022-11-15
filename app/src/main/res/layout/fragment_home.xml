@@ -9,17 +9,22 @@
         tools:context=".fragments.HomeFragment">
 
         <!-- TODO: Update blank fragment layout -->
+
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/inHum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/home_id_text"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.466" />
+            android:text="@string/in_hum_text"
+            tools:layout_editor_absoluteX="213dp"
+            tools:layout_editor_absoluteY="296dp" />
+
+        <TextView
+            android:id="@+id/outTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/out_temp_text"
+            tools:layout_editor_absoluteX="213dp"
+            tools:layout_editor_absoluteY="342dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/settingsButton"
@@ -57,6 +62,127 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/settingsButton"
             app:layout_constraintStart_toEndOf="@+id/controlButton" />
+
+        <TextView
+            android:id="@+id/inTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/in_temp_title"
+            tools:layout_editor_absoluteX="43dp"
+            tools:layout_editor_absoluteY="251dp" />
+
+        <TextView
+            android:id="@+id/outTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/out_temp_title"
+            tools:layout_editor_absoluteX="43dp"
+            tools:layout_editor_absoluteY="342dp" />
+
+        <TextView
+            android:id="@+id/stateTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tilatiedot"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="439dp" />
+
+        <TextView
+            android:id="@+id/relay1Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relay1_title"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="477dp" />
+
+        <TextView
+            android:id="@+id/relay2Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relay2_title"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="506dp" />
+
+        <TextView
+            android:id="@+id/relay3Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relay3_title"
+            tools:layout_editor_absoluteX="45dp"
+            tools:layout_editor_absoluteY="539dp" />
+
+        <TextView
+            android:id="@+id/relay4State"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relay4_state"
+            tools:layout_editor_absoluteX="114dp"
+            tools:layout_editor_absoluteY="573dp" />
+
+        <TextView
+            android:id="@+id/relay3State"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relay3_state"
+            tools:layout_editor_absoluteX="114dp"
+            tools:layout_editor_absoluteY="539dp" />
+
+        <TextView
+            android:id="@+id/relay2State"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relay2_state"
+            tools:layout_editor_absoluteX="114dp"
+            tools:layout_editor_absoluteY="506dp" />
+
+        <TextView
+            android:id="@+id/relay1State"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relay1_state"
+            tools:layout_editor_absoluteX="114dp"
+            tools:layout_editor_absoluteY="477dp" />
+
+        <TextView
+            android:id="@+id/relay4Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:text="@string/relay4_title"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="573dp" />
+
+        <TextView
+            android:id="@+id/inHumTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/in_hum_title"
+            tools:layout_editor_absoluteX="43dp"
+            tools:layout_editor_absoluteY="296dp" />
+
+        <TextView
+            android:id="@+id/inTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/in_temp_text"
+            tools:layout_editor_absoluteX="213dp"
+            tools:layout_editor_absoluteY="251dp" />
+
+        <TextView
+            android:id="@+id/homeSign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_sign_text"
+            tools:layout_editor_absoluteX="44dp"
+            tools:layout_editor_absoluteY="145dp" />
+
+        <ImageView
+            android:id="@+id/homeView"
+            android:layout_width="70dp"
+            android:layout_height="59dp"
+            tools:layout_editor_absoluteX="187dp"
+            tools:layout_editor_absoluteY="121dp"
+            tools:srcCompat="@tools:sample/avatars" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

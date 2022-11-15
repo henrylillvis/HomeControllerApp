@@ -7,7 +7,22 @@
     <string name="log_id_text">Tämä on log fragment</string>
 
     <!-- Home fragment strings -->
-
+    <string name="home_sign_text">Oletus koti</string>
+    <string name="in_temp_title">Sisälämpötila:</string>
+    <string name="out_temp_title">Ulkolämpötila:</string>
+    <string name="in_hum_title">Ilmankosteus:</string>
+    <string name="in_temp_text">-</string>
+    <string name="out_temp_text">-</string>
+    <string name="in_hum_text">-</string>
+    <string name="state_title">Tilatiedot</string>
+    <string name="relay1_title">Rele 1:</string>
+    <string name="relay2_title">Rele 2:</string>
+    <string name="relay3_title">Rele 3:</string>
+    <string name="relay4_title">Rele 4:</string>
+    <string name="relay1_state">-</string>
+    <string name="relay2_state">-</string>
+    <string name="relay3_state">-</string>
+    <string name="relay4_state">-</string>
 
     <!-- Settings fragment strings -->
 
@@ -26,6 +41,12 @@
     <string name="theme_title">Yöteema</string>
     <string name="reply_title">Default reply action</string>
     <string name="notifications_title">Sähköposti</string>
+
+    <!-- Preferences Summarys -->
+    <string name="emailoff_summary">Sähköposti ilmoitukset pois päältä</string>
+    <string name="emailon_summary">Sähköposti ilmoitukset päällä</string>
+    <string name="nighton_summary">Yöteema päällä</string>
+    <string name="nightoff_summary">Yöteema pois päältä</string>
 
     <!-- Control fragment strings -->
     <string name="default_address">127.0.0.1</string>

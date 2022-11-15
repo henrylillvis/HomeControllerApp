@@ -66,7 +66,7 @@ class LogDataFragment : Fragment() {
         }
 
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
-            val tekstikentta = view.findViewById<TextView>(R.id.logData)
+            val tekstikentta = view.findViewById<TextView>(R.id.logdata)
             fun bind (position: Int, clicked: MutableList<String>){
                 Log.d("asd","testi" + position.toString())
                 tekstikentta.setText("")
