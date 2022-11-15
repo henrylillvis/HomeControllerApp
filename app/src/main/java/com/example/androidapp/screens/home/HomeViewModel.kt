@@ -46,17 +46,6 @@ class HomeViewModel: ViewModel() {
         updateStates()
         Log.i("HomeViewModel", "HomeViewModel created!")
     }
-    /*
-        val sp = PreferenceManager.getDefaultSharedPreferences(this.context)
-        val u = sp.getString("signature","")
-        val h = sp.getString("home_signature","")
-        if (u != null) {
-
-        }
-        if (h != null) {
-
-        }
-        */
     /**
      * Callback called when the ViewModel is destroyed
      */

@@ -14,11 +14,12 @@
     <string name="in_temp_text">-</string>
     <string name="out_temp_text">-</string>
     <string name="in_hum_text">-</string>
-    <string name="state_title">Tilatiedot</string>
-    <string name="relay1_title">Rele 1:</string>
-    <string name="relay2_title">Rele 2:</string>
-    <string name="relay3_title">Rele 3:</string>
-    <string name="relay4_title">Rele 4:</string>
+    <string name="relay_title">Rele</string>
+    <string name="state_title">Tila</string>
+    <string name="relay1_title">1</string>
+    <string name="relay2_title">2</string>
+    <string name="relay3_title">3</string>
+    <string name="relay4_title">4</string>
     <string name="relay1_state">-</string>
     <string name="relay2_state">-</string>
     <string name="relay3_state">-</string>

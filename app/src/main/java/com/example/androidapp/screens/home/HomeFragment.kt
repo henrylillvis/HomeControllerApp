@@ -52,9 +52,9 @@ class HomeFragment : Fragment() {
         binding.homeSign.text = viewModel.home
     }
     private fun setTemperatures() {
-        binding.inTemp.text = viewModel.weather.temp2.toString()
-        binding.outTemp.text = viewModel.weather.temp1.toString()
-        binding.inHum.text = viewModel.weather.humid.toString()
+        binding.inTemp.text = viewModel.weather.temp2.toString() + " °C"
+        binding.outTemp.text = viewModel.weather.temp1.toString() + " °C"
+        binding.inHum.text = viewModel.weather.humid.toString() + " %"
     }
     private fun setRelayStates(){
         binding.relay1State.text = viewModel.states.relayOne
