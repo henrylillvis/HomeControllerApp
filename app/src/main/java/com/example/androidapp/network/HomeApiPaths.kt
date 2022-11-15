@@ -13,8 +13,8 @@ interface HomeApiPaths {
     @GET("/states")
     suspend fun getStates(): StatesProperty
 
-    @GET("/logs/{year}/{month}/{day}")
-    suspend fun getLogs(@Path(value="year") year: Int, @Path(value="month") month: Int, @Path(value="day") day: Int): List<LogProperty>
+    @GET("/logs")
+    suspend fun getLogs(): List<LogProperty>
 
     // @GET("/light") ?
 }

@@ -17,7 +17,7 @@ class HomeApi: ViewModel() {
     val address: LiveData<String>
         get() = _address
     private var _service = MutableLiveData<HomeApiPaths>()
-    val service: LiveData<HomeApiPaths>
+    private val service: LiveData<HomeApiPaths>
         get() = _service
 
     init {
@@ -25,6 +25,8 @@ class HomeApi: ViewModel() {
         val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(HomeController.appContext)
         val addr = sharedPreferences.getString("server_signature", "")
         _address.value = addr.toString()
+
+        // listen for changes to address and create new service immediately
         viewModelScope.launch {
             address.asFlow().collect {
                 createService()
@@ -32,8 +34,8 @@ class HomeApi: ViewModel() {
         }
     }
 
-    // set service with newly set address
-    fun createService(){
+    // create service with newly set address
+    private fun createService(){
         val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
@@ -42,5 +44,48 @@ class HomeApi: ViewModel() {
                         .addConverterFactory(MoshiConverterFactory.create(moshi))
                         .baseUrl("http://${address.value.toString()}")
                         .build().create(HomeApiPaths::class.java))
+    }
+
+
+    // wrapper functions to run API calls without explicit coroutine in anywhere else
+
+    fun getStates(): StatesProperty{
+        var res = StatesProperty("UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN")
+        viewModelScope.launch {
+            try {
+                res = service.value?.getStates() ?: throw Exception()
+            } catch (e: Exception) { }
+        }
+        return res
+    }
+
+    fun getLogs(): List<LogProperty>{
+        var res = emptyList<LogProperty>()
+        viewModelScope.launch {
+            try {
+                res = service.value?.getLogs() ?: throw Exception()
+            } catch (e: Exception) { }
+        }
+        return res
+    }
+
+    fun getWeather(): WeatherProperty{
+        var res = WeatherProperty(0.0, 0.0, 0.0)
+        viewModelScope.launch {
+            try {
+                res = service.value?.getWeather() ?: throw Exception()
+            } catch (e: Exception) { }
+        }
+        return res
+    }
+
+    fun setState(relay: Int, state: String): StateProperty{
+        var res = StateProperty("UNKNOWN")
+        viewModelScope.launch {
+            try {
+                res = service.value?.setState(relay, state) ?: throw Exception()
+            } catch (e: Exception) { }
+        }
+        return res
     }
 }

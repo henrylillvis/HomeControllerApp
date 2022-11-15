@@ -9,7 +9,6 @@ import androidx.fragment.app.activityViewModels
 import com.example.androidapp.network.HomeApi
 
 
-
 /**
  *  xml-tiedosto löytyy res -> xml -> root_preferences
  */
