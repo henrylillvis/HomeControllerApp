@@ -33,7 +33,10 @@
         app:icon="@drawable/ic_baseline_color_lens_24">
         <SwitchPreferenceCompat
             app:key="theme"
-            app:title="@string/theme_title" />
+            app:title="@string/theme_title"
+            app:summaryOn="@string/nighton_summary"
+            app:summaryOff="@string/nightoff_summary"
+            />
 
     </PreferenceCategory>
 
@@ -42,7 +45,10 @@
 
         <SwitchPreferenceCompat
             app:key="sync"
-            app:title="@string/notifications_title" />
+            app:title="@string/notifications_title"
+            app:summaryOn="@string/emailon_summary"
+            app:summaryOff="@string/emailoff_summary"
+            />
 
     </PreferenceCategory>
 

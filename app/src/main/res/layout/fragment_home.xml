@@ -6,27 +6,232 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.HomeFragment">
+        android:padding="20dp"
+        tools:context=".screens.home.HomeFragment">
 
-        <!-- TODO: Update blank fragment layout -->
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flow"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/flow_box"
+            android:padding="15dp"
+            app:constraint_referenced_ids="homeSign,homeImage"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/homeSign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/home_id_text"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@string/home_sign_text"
+            android:textColor="#263238"
+            tools:layout_editor_absoluteX="86dp"
+            tools:layout_editor_absoluteY="153dp" />
+
+        <ImageView
+            android:id="@+id/homeImage"
+            android:layout_width="66dp"
+            android:layout_height="61dp"
+            tools:layout_editor_absoluteX="219dp"
+            tools:layout_editor_absoluteY="129dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flow2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/flow_box"
+            android:padding="20dp"
+            android:orientation="horizontal"
+            app:flow_wrapMode="chain"
+            app:flow_maxElementsWrap="2"
+            app:flow_verticalGap="10dp"
+            app:constraint_referenced_ids="inTempTitle,inTemp,inHumTitle,inHum"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.466" />
+            app:layout_constraintTop_toBottomOf="@+id/flow" />
+
+        <TextView
+            android:id="@+id/inTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/in_temp_title"
+            android:textColor="#263238"
+            tools:layout_editor_absoluteX="71dp"
+            tools:layout_editor_absoluteY="251dp" />
+
+        <TextView
+            android:id="@+id/inTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/in_temp_text"
+            android:textColor="#263238"
+            tools:layout_editor_absoluteX="253dp"
+            tools:layout_editor_absoluteY="251dp" />
+
+        <TextView
+            android:id="@+id/inHumTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/in_hum_title"
+            android:textColor="#263238"
+            tools:layout_editor_absoluteX="68dp"
+            tools:layout_editor_absoluteY="323dp" />
+
+        <TextView
+            android:id="@+id/inHum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/in_hum_text"
+            android:textColor="#263238"
+            tools:layout_editor_absoluteX="255dp"
+            tools:layout_editor_absoluteY="314dp" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flow3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/flow_box"
+            android:padding="20dp"
+            app:constraint_referenced_ids="outTempTitle,outTemp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/flow2" />
+
+        <TextView
+            android:id="@+id/outTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/out_temp_text"
+            android:textColor="#263238"
+            tools:layout_editor_absoluteX="259dp"
+            tools:layout_editor_absoluteY="382dp" />
+
+        <TextView
+            android:id="@+id/outTempTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/out_temp_title"
+            android:textColor="#263238"
+            tools:layout_editor_absoluteX="69dp"
+            tools:layout_editor_absoluteY="374dp" />
+
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@color/flow_box"
+            android:padding="20dp"
+            android:orientation="vertical"
+            app:flow_horizontalStyle="packed"
+            app:flow_horizontalGap="20dp"
+            app:flow_wrapMode="chain"
+            app:flow_maxElementsWrap="2"
+            app:flow_verticalGap="10dp"
+            app:constraint_referenced_ids="stateTitle,stateText,relay1Title,relay1State,relay2Title,relay2State,relay3Title,relay3State,relay4Title,relay4State"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/flow3" />
+
+        <TextView
+            android:id="@+id/stateTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relay_title"
+            android:textColor="#263238"
+            tools:layout_editor_absoluteX="71dp"
+            tools:layout_editor_absoluteY="458dp" />
+        <TextView
+            android:id="@+id/stateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/state_title"
+            android:textColor="#263238"
+            tools:layout_editor_absoluteX="71dp"
+            tools:layout_editor_absoluteY="458dp" />
+
+        <TextView
+            android:id="@+id/relay1Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relay1_title"
+            android:textColor="#263238"
+            tools:layout_editor_absoluteX="71dp"
+            tools:layout_editor_absoluteY="491dp" />
+
+        <TextView
+            android:id="@+id/relay1State"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relay1_state"
+            android:textColor="#263238"
+            tools:layout_editor_absoluteX="234dp"
+            tools:layout_editor_absoluteY="491dp" />
+
+        <TextView
+            android:id="@+id/relay2Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relay2_title"
+            android:textColor="#263238"
+            tools:layout_editor_absoluteX="71dp"
+            tools:layout_editor_absoluteY="525dp" />
+
+        <TextView
+            android:id="@+id/relay2State"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relay2_state"
+            android:textColor="#263238"
+            tools:layout_editor_absoluteX="234dp"
+            tools:layout_editor_absoluteY="525dp" />
+
+        <TextView
+            android:id="@+id/relay3Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relay3_title"
+            android:textColor="#263238"
+            tools:layout_editor_absoluteX="71dp"
+            tools:layout_editor_absoluteY="560dp" />
+
+        <TextView
+            android:id="@+id/relay3State"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relay3_state"
+            android:textColor="#263238"
+            tools:layout_editor_absoluteX="234dp"
+            tools:layout_editor_absoluteY="560dp" />
+
+        <TextView
+            android:id="@+id/relay4Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relay4_title"
+            android:textColor="#263238"
+            tools:layout_editor_absoluteX="71dp"
+            tools:layout_editor_absoluteY="595dp" />
+
+        <TextView
+            android:id="@+id/relay4State"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relay4_state"
+            android:textColor="#263238"
+            tools:layout_editor_absoluteX="238dp"
+            tools:layout_editor_absoluteY="595dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/settingsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="24dp"
             android:clickable="true"
             android:src="@drawable/ic_baseline_settings_24"
             app:backgroundTint="@color/purple_500"
@@ -38,8 +243,6 @@
             android:id="@+id/controlButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginBottom="24dp"
             android:clickable="true"
             android:src="@drawable/ic_baseline_lightbulb_24"
             app:backgroundTint="@color/purple_500"
@@ -50,7 +253,6 @@
             android:id="@+id/logButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
             android:clickable="true"
             android:src="@drawable/ic_baseline_text_snippet_24"
             app:backgroundTint="@color/purple_500"
