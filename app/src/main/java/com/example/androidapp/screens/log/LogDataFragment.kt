@@ -1,4 +1,4 @@
-package com.example.androidapp.fragments
+package com.example.androidapp.screens.log
 
 import android.os.Bundle
 import android.util.Log

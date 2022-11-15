@@ -6,7 +6,7 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.HomeFragment">
+        tools:context=".screens.home.HomeFragment">
 
         <!-- TODO: Update blank fragment layout -->
 
@@ -15,7 +15,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/in_hum_text"
-            tools:layout_editor_absoluteX="213dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/inHumTitle"
             tools:layout_editor_absoluteY="296dp" />
 
         <TextView
@@ -76,7 +77,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/out_temp_title"
-            tools:layout_editor_absoluteX="43dp"
+            app:layout_constraintEnd_toStartOf="@+id/outTemp"
+            app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="342dp" />
 
         <TextView
@@ -84,15 +86,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tilatiedot"
-            tools:layout_editor_absoluteX="44dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="439dp" />
 
         <TextView
             android:id="@+id/relay1Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:layout_marginEnd="32dp"
             android:text="@string/relay1_title"
-            tools:layout_editor_absoluteX="44dp"
+            app:layout_constraintEnd_toStartOf="@+id/relay1State"
+            app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="477dp" />
 
         <TextView
@@ -116,7 +122,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/relay4_state"
-            tools:layout_editor_absoluteX="114dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/relay4Title"
             tools:layout_editor_absoluteY="573dp" />
 
         <TextView
@@ -124,7 +131,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/relay3_state"
-            tools:layout_editor_absoluteX="114dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/relay3Title"
             tools:layout_editor_absoluteY="539dp" />
 
         <TextView
@@ -132,7 +140,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/relay2_state"
-            tools:layout_editor_absoluteX="114dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/relay2Title"
             tools:layout_editor_absoluteY="506dp" />
 
         <TextView

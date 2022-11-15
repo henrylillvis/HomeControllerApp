@@ -1,4 +1,4 @@
-package com.example.androidapp.fragments
+package com.example.androidapp.screens.control
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.example.androidapp.R
 import com.example.androidapp.databinding.FragmentControlBinding
-import com.example.androidapp.databinding.FragmentHomeBinding
 
 
 class ControlFragment : Fragment() {

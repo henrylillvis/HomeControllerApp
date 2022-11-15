@@ -1,4 +1,4 @@
-package com.example.androidapp.fragments
+package com.example.androidapp.screens.settings
 
 import android.os.Bundle
 import androidx.preference.EditTextPreference

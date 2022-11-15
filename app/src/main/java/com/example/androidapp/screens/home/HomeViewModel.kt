@@ -1,4 +1,4 @@
-package com.example.androidapp.fragments
+package com.example.androidapp.screens.home
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
