@@ -40,17 +40,17 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/notifications_header"
-        app:icon="@drawable/ic_baseline_sync_24">
+<!--    <PreferenceCategory app:title="@string/notifications_header"-->
+<!--        app:icon="@drawable/ic_baseline_sync_24">-->
 
-        <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/notifications_title"
-            app:summaryOn="@string/emailon_summary"
-            app:summaryOff="@string/emailoff_summary"
-            />
+<!--        <SwitchPreferenceCompat-->
+<!--            app:key="sync"-->
+<!--            app:title="@string/notifications_title"-->
+<!--            app:summaryOn="@string/emailon_summary"-->
+<!--            app:summaryOff="@string/emailoff_summary"-->
+<!--            />-->
 
-    </PreferenceCategory>
+<!--    </PreferenceCategory>-->
 
 
 </PreferenceScreen>
