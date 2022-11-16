@@ -1,13 +1,16 @@
 package com.example.androidapp.screens.settings
 
 import android.os.Bundle
+import android.util.Log.d
 import androidx.preference.EditTextPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.example.androidapp.R
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.androidapp.network.HomeApi
-
+import com.example.androidapp.network.StatesProperty
+import kotlinx.coroutines.launch
 
 
 /**
@@ -32,6 +35,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 false
             }
         }
+
     }
 
 }
