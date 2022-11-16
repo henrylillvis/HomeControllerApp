@@ -17,7 +17,7 @@ class HomeApi: ViewModel() {
     val address: LiveData<String>
         get() = _address
     private var _service = MutableLiveData<HomeApiPaths>()
-    private val service: LiveData<HomeApiPaths>
+    val service: LiveData<HomeApiPaths>
         get() = _service
 
     init {
@@ -46,46 +46,4 @@ class HomeApi: ViewModel() {
                         .build().create(HomeApiPaths::class.java))
     }
 
-
-    // wrapper functions to run API calls without explicit coroutine in anywhere else
-
-    fun getStates(): StatesProperty{
-        var res = StatesProperty("UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN")
-        viewModelScope.launch {
-            try {
-                res = service.value?.getStates() ?: throw Exception()
-            } catch (e: Exception) { }
-        }
-        return res
-    }
-
-    fun getLogs(): List<LogProperty>{
-        var res = emptyList<LogProperty>()
-        viewModelScope.launch {
-            try {
-                res = service.value?.getLogs() ?: throw Exception()
-            } catch (e: Exception) { }
-        }
-        return res
-    }
-
-    fun getWeather(): WeatherProperty{
-        var res = WeatherProperty(0.0, 0.0, 0.0)
-        viewModelScope.launch {
-            try {
-                res = service.value?.getWeather() ?: throw Exception()
-            } catch (e: Exception) { }
-        }
-        return res
-    }
-
-    fun setState(relay: Int, state: String): StateProperty{
-        var res = StateProperty("UNKNOWN")
-        viewModelScope.launch {
-            try {
-                res = service.value?.setState(relay, state) ?: throw Exception()
-            } catch (e: Exception) { }
-        }
-        return res
-    }
 }
