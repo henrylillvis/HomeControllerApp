@@ -1,4 +1,4 @@
-package com.example.androidapp.fragments
+package com.example.androidapp.screens.home
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
@@ -46,17 +46,6 @@ class HomeViewModel: ViewModel() {
         updateStates()
         Log.i("HomeViewModel", "HomeViewModel created!")
     }
-    /*
-        val sp = PreferenceManager.getDefaultSharedPreferences(this.context)
-        val u = sp.getString("signature","")
-        val h = sp.getString("home_signature","")
-        if (u != null) {
-
-        }
-        if (h != null) {
-
-        }
-        */
     /**
      * Callback called when the ViewModel is destroyed
      */

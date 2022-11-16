@@ -1,8 +1,7 @@
-package com.example.androidapp.fragments
+package com.example.androidapp.screens.home
 
 
 import android.os.Bundle
-import android.util.Log.d
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.preference.PreferenceManager
 import com.example.androidapp.R
 import com.example.androidapp.databinding.FragmentHomeBinding
 
@@ -54,9 +52,9 @@ class HomeFragment : Fragment() {
         binding.homeSign.text = viewModel.home
     }
     private fun setTemperatures() {
-        binding.inTemp.text = viewModel.weather.temp2.toString()
-        binding.outTemp.text = viewModel.weather.temp1.toString()
-        binding.inHum.text = viewModel.weather.humid.toString()
+        binding.inTemp.text = viewModel.weather.temp2.toString() + " °C"
+        binding.outTemp.text = viewModel.weather.temp1.toString() + " °C"
+        binding.inHum.text = viewModel.weather.humid.toString() + " %"
     }
     private fun setRelayStates(){
         binding.relay1State.text = viewModel.states.relayOne
