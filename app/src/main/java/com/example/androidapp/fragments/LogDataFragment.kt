@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidapp.R
 import com.example.androidapp.databinding.FragmentLogDataBinding
+import com.example.androidapp.network.LogProperty
 
 
 class LogDataFragment : Fragment() {
@@ -45,12 +46,17 @@ class LogDataFragment : Fragment() {
 
     class MyAdapter: RecyclerView.Adapter<MyAdapter.ViewHolder>() {
         var Lista = mutableListOf<String>()
-
+        var Data = mutableListOf<LogProperty>()
         init {
+        val listasi = listOf<Double>(1.20,2.50,13.00)
+        var testidata : LogProperty = ("asdf","asdf",listasi)
+        Data.add(testidata)
+
+
             //populate list from server for recycler
             // for testing
             (1..210).forEach{
-                Lista.add("Testi")
+                Data.add()
             }
         }
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -67,11 +73,13 @@ class LogDataFragment : Fragment() {
 
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
             val tekstikentta = view.findViewById<TextView>(R.id.logData)
-            fun bind (position: Int, Lista: MutableList<String>){
+            fun bind (position: Int, Lista: MutableList<String>,Data: MutableList<LogProperty>){
                 Log.d("asd","testi" + position.toString())
-                tekstikentta.setText(Lista[position].toString())
-
-
+               // tekstikentta.setText(Lista[position].toString())
+                var info = "Time: "+Data[position].timestamp
+                info += " Action: "+Data[position].action.toString()
+                for(x in Data[position].values){ info += " "+x.toString()}
+                tekstikentta.setText(info)
             }
         }
     }
