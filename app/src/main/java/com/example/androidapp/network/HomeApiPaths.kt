@@ -7,7 +7,7 @@ import retrofit2.http.Path
 
 //    val apiVM: HomeApi by activityViewModels()
 //    lifecycleScope.launch {
-//        apiVM.service.value?.getWeather()
+//        apiVM.service?.getWeather()
 //    }
 
 interface HomeApiPaths {

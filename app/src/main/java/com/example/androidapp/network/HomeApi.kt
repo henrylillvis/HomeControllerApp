@@ -17,8 +17,8 @@ class HomeApi: ViewModel() {
     val address: LiveData<String>
         get() = _address
     private var _service = MutableLiveData<HomeApiPaths>()
-    val service: LiveData<HomeApiPaths>
-        get() = _service
+    val service: HomeApiPaths?
+        get() = _service.value
 
     init {
         // get first time value from preference
