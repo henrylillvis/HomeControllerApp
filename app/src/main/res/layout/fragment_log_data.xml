@@ -7,7 +7,7 @@
         android:id="@+id/constraintView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.LogDataFragment">
+        tools:context=".screens.log.LogDataFragment">
 
         <TextView
             android:id="@+id/textView4"
@@ -16,8 +16,10 @@
             android:text="@string/log_id_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.597"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.966" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/logHomeButton"
@@ -30,5 +32,15 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/ic_baseline_home_24" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/logDataRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="@+id/logHomeButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

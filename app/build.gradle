@@ -47,6 +47,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation("androidx.cardview:cardview:1.0.0")
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -56,15 +57,14 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
-    /*
     def version_moshi = "1.13.0"
-    //Moshi
-    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
-    */
+
 
     def version_retrofit = "2.9.0"
     //Retrofit
-    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
-    implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit"
-    //implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+//    implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
+//    implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit"
+    implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+    implementation "com.squareup.moshi:moshi-kotlin:$version_moshi"
+
 }

@@ -1,4 +1,4 @@
-package com.example.androidapp.fragments
+package com.example.androidapp.screens.control
 
 import android.annotation.SuppressLint
 import android.graphics.Color
