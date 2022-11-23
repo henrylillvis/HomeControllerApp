@@ -38,8 +38,7 @@
                         android:layout_centerInParent="true"
                         android:layout_centerVertical="true"
                         android:padding="5dp"
-                        android:text="@string/home_card_title"
-                        android:textColor="#263238" />
+                        android:text="@string/home_card_title" />
 
                 </LinearLayout>
 
@@ -67,8 +66,7 @@
                         android:layout_centerInParent="true"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="5dp"
-                        android:text="@string/home_sign_text"
-                        android:textColor="#263238" />
+                        android:text="@string/home_sign_text" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -94,8 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="@string/in_temp_title"
-                    android:textColor="#263238" />
+                    android:text="@string/in_temp_title"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -117,8 +114,7 @@
                         android:id="@+id/inTemp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/in_temp_text"
-                        android:textColor="#263238" />
+                        android:text="@string/in_temp_text" />
 
                     <ImageView
                         android:id="@+id/humImage"
@@ -135,8 +131,7 @@
                         android:id="@+id/inHum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/in_hum_text"
-                        android:textColor="#263238" />
+                        android:text="@string/in_hum_text" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -162,8 +157,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="@string/out_temp_title"
-                    android:textColor="#263238" />
+                    android:text="@string/out_temp_title" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -186,8 +180,7 @@
                         android:id="@+id/outTemp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/out_temp_text"
-                        android:textColor="#263238" />
+                        android:text="@string/out_temp_text" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -215,8 +208,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="@string/relay_card_title"
-                    android:textColor="#263238" />
+                    android:text="@string/relay_card_title" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -250,15 +242,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="25dp"
-                                android:text="@string/relay1_title"
-                                android:textColor="#263238" />
+                                android:text="@string/relay1_title" />
 
                             <TextView
                                 android:id="@+id/relay1State"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/relay1_state"
-                                android:textColor="#263238" />
+                                android:text="@string/relay1_state" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -271,15 +261,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="25dp"
-                                android:text="@string/relay2_title"
-                                android:textColor="#263238" />
+                                android:text="@string/relay2_title" />
 
                             <TextView
                                 android:id="@+id/relay2State"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/relay2_state"
-                                android:textColor="#263238" />
+                                android:text="@string/relay2_state"/>
 
                         </LinearLayout>
 
@@ -293,15 +281,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="25dp"
-                                android:text="@string/relay3_title"
-                                android:textColor="#263238" />
+                                android:text="@string/relay3_title" />
 
                             <TextView
                                 android:id="@+id/relay3State"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/relay3_state"
-                                android:textColor="#263238" />
+                                android:text="@string/relay3_state" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -314,15 +300,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="25dp"
-                                android:text="@string/relay4_title"
-                                android:textColor="#263238" />
+                                android:text="@string/relay4_title" />
 
                             <TextView
                                 android:id="@+id/relay4State"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/relay4_state"
-                                android:textColor="#263238" />
+                                android:text="@string/relay4_state"  />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -337,7 +321,6 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:src="@drawable/ic_baseline_settings_24"
-            app:backgroundTint="@color/purple_500"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:rippleColor="@color/black" />
@@ -348,7 +331,6 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:src="@drawable/ic_baseline_lightbulb_24"
-            app:backgroundTint="@color/purple_500"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -358,7 +340,6 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:src="@drawable/ic_baseline_text_snippet_24"
-            app:backgroundTint="@color/purple_500"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/settingsButton"
             app:layout_constraintStart_toEndOf="@+id/controlButton" />
