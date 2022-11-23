@@ -1,16 +1,13 @@
 package com.example.androidapp.screens.settings
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log.d
-import androidx.preference.EditTextPreference
-import androidx.preference.Preference
-import androidx.preference.PreferenceFragmentCompat
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.androidapp.R
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
+import androidx.preference.*
 import com.example.androidapp.network.HomeApi
-import com.example.androidapp.network.StatesProperty
-import kotlinx.coroutines.launch
 
 
 /**
@@ -24,6 +21,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val nameSignature = findPreference<EditTextPreference>("signature")
         val homeSignature = findPreference<EditTextPreference>("home_signature")
         val serverSignature = findPreference<EditTextPreference>("server_signature")
+        val theme = findPreference<SwitchPreferenceCompat>("theme")
         val apiVM: HomeApi by activityViewModels()
 
         // force ipv4 address and set correct address to apiViewModel
@@ -35,6 +33,19 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 false
             }
         }
+
+        theme?.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, newValue ->
+            if (newValue == true)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            else
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            true
+        }
+
+
+
+
+
 
     }
 
