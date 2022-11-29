@@ -9,8 +9,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="$USER_HOME$/documents/kotitehtävät/mobiiliohjelmointi/HomeController" />
-            <option value="$USER_HOME$/documents/kotitehtävät/mobiiliohjelmointi/HomeController/app" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -12,9 +12,9 @@
     <string name="out_temp_title">Ulko</string>
     <string name="home_card_title">Koti/osoite</string>
     <string name="relay_card_title">Releiden tila</string>
-    <string name="in_temp_text">23°C</string>
-    <string name="out_temp_text">-5°C</string>
-    <string name="in_hum_text">18%</string>
+    <string name="in_temp_text">-</string>
+    <string name="out_temp_text">-</string>
+    <string name="in_hum_text">-</string>
     <string name="relay_title">Rele</string>
     <string name="state_title">Tila</string>
     <string name="relay1_title">Rele 1:</string>
