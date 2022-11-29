@@ -33,13 +33,15 @@
     <string name="user_header">Käyttäjä</string>
     <string name="home_header">Koti</string>
     <string name="server_header">Palvelin</string>
+    <string name="pir_header">PIR</string>
     <string name="notifications_header">Ilmoitukset</string>
     <string name="theme_header">Teema</string>
 
     <!-- Preferences Titles -->
     <string name="signature_title">Nimi</string>
     <string name="home_title">Nimi tai osoite</string>
-    <string name="server_title">IP-osoite</string>
+    <string name="server_title">IP-osoite ja portti</string>
+    <string name="pir_title">PIR aika</string>
     <string name="theme_title">Yöteema</string>
     <string name="reply_title">Default reply action</string>
     <string name="notifications_title">Sähköposti</string>
@@ -51,7 +53,8 @@
     <string name="nightoff_summary">Yöteema pois päältä</string>
 
     <!-- Control fragment strings -->
-    <string name="default_address">127.0.0.1</string>
+    <string name="default_address">127.0.0.1:80</string>
+    <string name="default_pir">1</string>
 
     <!-- Log fragment strings  -->
 
