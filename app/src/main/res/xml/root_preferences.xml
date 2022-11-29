@@ -40,6 +40,15 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory app:title="@string/pir_header"
+        app:icon="@drawable/ic_baseline_lightbulb_circle_24">
+        <EditTextPreference
+            app:key="pir_signature"
+            app:defaultValue="@string/default_pir"
+            app:title="@string/pir_title"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
 <!--    <PreferenceCategory app:title="@string/notifications_header"-->
 <!--        app:icon="@drawable/ic_baseline_sync_24">-->
 

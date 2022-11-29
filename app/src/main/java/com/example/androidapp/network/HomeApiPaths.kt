@@ -2,6 +2,7 @@ package com.example.androidapp.network
 
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 //    run from activity like this:
@@ -12,7 +13,7 @@ import retrofit2.http.Path
 //    }
 
 interface HomeApiPaths {
-    @GET("/state/{relay}/{state}")
+    @PUT("/state/{relay}/{state}")
     suspend fun setState(@Path(value="relay") relay: Int, @Path(value="state") state: String): StateProperty
 
     @GET("/weather")
@@ -24,6 +25,10 @@ interface HomeApiPaths {
     @GET("/logs")
     suspend fun getLogs(): List<LogProperty>
 
-    // @GET("/light") ?
+    @GET("/pir")
+    suspend fun getPir(): PirProperty
+
+    @PUT("/pir/{seconds}")
+    suspend fun setPir(@Path(value="seconds") seconds: Int): PirProperty
 }
 
