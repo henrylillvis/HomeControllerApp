@@ -25,7 +25,7 @@ import com.example.androidapp.network.HomeApi
 
 class LogDataFragment : Fragment() {
     private lateinit var binding: FragmentLogDataBinding
-    companion object{ lateinit var logData: List<LogProperty> }
+    companion object{ var logData: List<LogProperty>? = null }
     private val apiVM: HomeApi by activityViewModels()
     private val _response = MutableLiveData<String>()
     private var searching = false
@@ -41,12 +41,7 @@ class LogDataFragment : Fragment() {
         binding.logHomeButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_logDataFragment_to_homeFragment)
         }
-
         getData()
-
-
-
-
         return binding.root
     }
 
@@ -63,12 +58,14 @@ class LogDataFragment : Fragment() {
                     if (apiVM.service == null){throw Exception("Virhe yhteyden muodostamisessa.")
                     }
                 }
+                logData = apiVM.service?.getLogs()
 
-                logData = apiVM.service?.getLogs()!!
+
                 _response.value = "Haku onnistui"
             }catch (e: Exception){
                 val errorMsg = "Haku epäonnistui: ${e}"
                 _response.value = errorMsg
+                showError(errorMsg)
             }
 
             Log.d("jb", "Api response: " + _response.value)
@@ -81,10 +78,10 @@ class LogDataFragment : Fragment() {
             }
         }
     }
-   // private fun showError(msg: String?){
-     //   binding.errorMessage.text = msg
-       // binding.errorCard.visibility = View.VISIBLE
-  //  }
+    private fun showError(msg: String?){
+        binding.errorMessage.text = msg
+      binding.errorCard.visibility = View.VISIBLE
+    }
 
     class MyAdapter: RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
@@ -93,15 +90,21 @@ class LogDataFragment : Fragment() {
             return ViewHolder(view)
         }
 
-        override fun getItemCount() = logData.size
+        override fun getItemCount() : Int{
+          if(logData == null)
+              return 0
+            else
+                return logData!!.size
+        }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             Log.d("jpk", "onBindViewHolder, position= " + position.toString())
-            holder.bind(position,logData)
+            holder.bind(position,logData!!)
         }
 
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
             val tekstikentta = view.findViewById<TextView>(R.id.logData)
+
             fun bind (position: Int, Data: List<LogProperty>){
                 Log.d("asd","testi" + position.toString())
                 tekstikentta.setText(Data[position].toString())
