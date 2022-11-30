@@ -8,24 +8,34 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidapp.R
 import com.example.androidapp.databinding.FragmentLogDataBinding
 import com.example.androidapp.network.LogProperty
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import java.lang.Exception
+import androidx.lifecycle.*
+import com.example.androidapp.network.HomeApi
 
 
 class LogDataFragment : Fragment() {
-
-
+    private lateinit var binding: FragmentLogDataBinding
+    private var logData: List<LogProperty>? = null
+    private val apiVM: HomeApi by activityViewModels()
+    private val _response = MutableLiveData<String>()
+    private var searching = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
 
-        val binding = DataBindingUtil.inflate<FragmentLogDataBinding>(
+        binding = DataBindingUtil.inflate<FragmentLogDataBinding>(
             inflater,
             R.layout.fragment_log_data, container, false
         )
@@ -40,25 +50,42 @@ class LogDataFragment : Fragment() {
         binding.logHomeButton.setOnClickListener { view: View ->
             view.findNavController().navigate(R.id.action_logDataFragment_to_homeFragment)
         }
-
+        getData()
         return binding.root
     }
 
+    private fun getData() {
+        Log.d("jb", "getData started")
+        lifecycleScope.launch {
+            searching = true
+            try {
+
+                //Service ei kerkeä latautumaan ensimmäisellä kerralla?
+                if(apiVM.service == null){
+                    Log.d("jb", apiVM.service.toString())
+                    delay(1000)
+                    if (apiVM.service == null){throw Exception("Virhe yhteyden muodostamisessa.")
+                    }
+                }
+
+                logData = apiVM.service?.getLogs()
+                _response.value = "Haku onnistui"
+            }catch (e: Exception){
+                val errorMsg = "Haku epäonnistui: ${e.message}"
+                _response.value = errorMsg
+            }
+
+            Log.d("jb", "Api response: " + _response.value)
+            searching = false
+        }
+    }
+   // private fun showError(msg: String?){
+     //   binding.errorMessage.text = msg
+       // binding.errorCard.visibility = View.VISIBLE
+  //  }
+
     class MyAdapter: RecyclerView.Adapter<MyAdapter.ViewHolder>() {
         var Lista = mutableListOf<String>()
-        var Data = mutableListOf<LogProperty>()
-        init {
-        val listasi = listOf<Double>(1.20,2.50,13.00)
-        var testidata : LogProperty = ("asdf","asdf",listasi)
-        Data.add(testidata)
-
-
-            //populate list from server for recycler
-            // for testing
-            (1..210).forEach{
-                Data.add()
-            }
-        }
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.rv_logdata,parent,false)
             return ViewHolder(view)
@@ -68,20 +95,22 @@ class LogDataFragment : Fragment() {
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             Log.d("jpk", "onBindViewHolder, position= " + position.toString())
-            holder.bind(position,Lista)
+          //  holder.bind(position,Lista)
         }
 
         class ViewHolder(view: View) : RecyclerView.ViewHolder(view){
             val tekstikentta = view.findViewById<TextView>(R.id.logData)
             fun bind (position: Int, Lista: MutableList<String>,Data: MutableList<LogProperty>){
                 Log.d("asd","testi" + position.toString())
-               // tekstikentta.setText(Lista[position].toString())
+                //tekstikentta.setText(Lista[position].toString())
                 var info = "Time: "+Data[position].timestamp
                 info += " Action: "+Data[position].action.toString()
                 for(x in Data[position].values){ info += " "+x.toString()}
                 tekstikentta.setText(info)
             }
         }
+
+
     }
 }
 
