@@ -8,18 +8,19 @@
 
     <!-- Home fragment strings -->
     <string name="home_sign_text">Oletus koti</string>
-    <string name="in_temp_title">Sisälämpötila:</string>
-    <string name="out_temp_title">Ulkolämpötila:</string>
-    <string name="in_hum_title">Ilmankosteus:</string>
+    <string name="in_temp_title">Sisä</string>
+    <string name="out_temp_title">Ulko</string>
+    <string name="home_card_title">Koti/osoite</string>
+    <string name="relay_card_title">Releiden tila</string>
     <string name="in_temp_text">-</string>
     <string name="out_temp_text">-</string>
     <string name="in_hum_text">-</string>
     <string name="relay_title">Rele</string>
     <string name="state_title">Tila</string>
-    <string name="relay1_title">1</string>
-    <string name="relay2_title">2</string>
-    <string name="relay3_title">3</string>
-    <string name="relay4_title">4</string>
+    <string name="relay1_title">Rele 1:</string>
+    <string name="relay2_title">Rele 2:</string>
+    <string name="relay3_title">Rele 3:</string>
+    <string name="relay4_title">Rele 4:</string>
     <string name="relay1_state">-</string>
     <string name="relay2_state">-</string>
     <string name="relay3_state">-</string>
@@ -32,13 +33,15 @@
     <string name="user_header">Käyttäjä</string>
     <string name="home_header">Koti</string>
     <string name="server_header">Palvelin</string>
+    <string name="pir_header">PIR</string>
     <string name="notifications_header">Ilmoitukset</string>
     <string name="theme_header">Teema</string>
 
     <!-- Preferences Titles -->
     <string name="signature_title">Nimi</string>
     <string name="home_title">Nimi tai osoite</string>
-    <string name="server_title">IP-osoite</string>
+    <string name="server_title">IP-osoite ja portti</string>
+    <string name="pir_title">PIR aika</string>
     <string name="theme_title">Yöteema</string>
     <string name="reply_title">Default reply action</string>
     <string name="notifications_title">Sähköposti</string>
@@ -50,7 +53,8 @@
     <string name="nightoff_summary">Yöteema pois päältä</string>
 
     <!-- Control fragment strings -->
-    <string name="default_address">127.0.0.1</string>
+    <string name="default_address">127.0.0.1:80</string>
+    <string name="default_pir">1</string>
 
     <!-- Log fragment strings  -->
 

@@ -22,8 +22,13 @@ data class LogProperty(
 
 // possible relay states (ON, OFF, AUTO)
 data class StatesProperty(
-    @Json(name = "1") val relayOne: String,
-    @Json(name = "2") val relayTwo: String,
-    @Json(name = "3") val relayThree: String,
-    @Json(name = "4") val relayFour: String,
+    @Json(name = "ONE") val relayOne: String,
+    @Json(name = "TWO") val relayTwo: String,
+    @Json(name = "THREE") val relayThree: String,
+    @Json(name = "FOUR") val relayFour: String,
+)
+
+// delay value in seconds for PIR motion detector
+data class PirProperty(
+    @Json(name = "SECONDS") val seconds: Int
 )

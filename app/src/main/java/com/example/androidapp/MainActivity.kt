@@ -4,10 +4,13 @@ package com.example.androidapp
 
 import android.content.SharedPreferences
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
+import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log.d
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
+import androidx.preference.Preference
 import androidx.preference.PreferenceManager
 import com.example.androidapp.databinding.ActivityMainBinding
 
@@ -20,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
 
         //Loads Shared preferences
         val prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -34,6 +38,12 @@ class MainActivity : AppCompatActivity() {
 
             prefs.registerOnSharedPreferenceChangeListener(listener);
         */
+        val darkTheme = prefs.getBoolean("theme", false)
+            if (darkTheme)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            else
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
 }
+
