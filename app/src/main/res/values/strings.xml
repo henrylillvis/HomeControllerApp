@@ -55,6 +55,9 @@
     <!-- Control fragment strings -->
     <string name="default_address">127.0.0.1:80</string>
     <string name="default_pir">1</string>
+    <string name="relay_controls">Relay controls</string>
+    <string name="rele_1">Rele 1</string>
+    <string name="rele_2">Rele 2</string>
 
     <!-- Log fragment strings  -->
 
