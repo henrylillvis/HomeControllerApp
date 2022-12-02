@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidApp</string>
+    <string name="app_name">Home controller</string>
 
     <!-- Fragments ID: text Titles Poistetaan tarvittaessa -->
     <string name="home_id_text">Tämä on home fragment</string>
