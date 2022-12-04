@@ -33,7 +33,7 @@
     <string name="user_header">Käyttäjä</string>
     <string name="home_header">Koti</string>
     <string name="server_header">Palvelin</string>
-    <string name="pir_header">PIR</string>
+    <string name="pir_header">Liikkeentunnistin</string>
     <string name="notifications_header">Ilmoitukset</string>
     <string name="theme_header">Teema</string>
 
@@ -41,7 +41,7 @@
     <string name="signature_title">Nimi</string>
     <string name="home_title">Nimi tai osoite</string>
     <string name="server_title">IP-osoite ja portti</string>
-    <string name="pir_title">PIR aika</string>
+    <string name="pir_title">Liikkeentunnistimen aika</string>
     <string name="theme_title">Yöteema</string>
     <string name="reply_title">Default reply action</string>
     <string name="notifications_title">Sähköposti</string>

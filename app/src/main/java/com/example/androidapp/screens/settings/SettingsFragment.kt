@@ -1,5 +1,6 @@
 package com.example.androidapp.screens.settings
 
+import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log.d
@@ -8,7 +9,11 @@ import com.example.androidapp.R
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.preference.*
+import com.example.androidapp.HomeController
 import com.example.androidapp.network.HomeApi
+import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 
@@ -18,6 +23,22 @@ import kotlinx.coroutines.launch
 
 
 class SettingsFragment : PreferenceFragmentCompat() {
+
+    private val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(HomeController.appContext)
+    private val apiVM: HomeApi by activityViewModels()
+
+    override fun onResume() {
+        super.onResume()
+
+        val prefEditor = sharedPreferences.edit()
+        lifecycleScope.launch {
+            val t = apiVM.service?.getMotion()!!.motion
+            // set value to preference manually, as this doesn't really work with coroutines
+            prefEditor.putString("pir_signature", t.toString())
+            prefEditor.commit()
+        }
+    }
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?){
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
         val nameSignature = findPreference<EditTextPreference>("signature")
@@ -25,7 +46,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val serverSignature = findPreference<EditTextPreference>("server_signature")
         val pirSignature = findPreference<EditTextPreference>("pir_signature")
         val theme = findPreference<SwitchPreferenceCompat>("theme")
-        val apiVM: HomeApi by activityViewModels()
+
+        val prefEditor = sharedPreferences.edit()
 
         // force ipv4 address + port and set to apiViewModel
         serverSignature?.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, newValue ->
@@ -38,11 +60,14 @@ class SettingsFragment : PreferenceFragmentCompat() {
         }
 
         pirSignature?.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { preference, newValue ->
-            if (newValue.toString().matches("""^[]?\d+${'$'}""".toRegex())) {
-                val seconds = newValue.toString().toInt()
+            if (newValue.toString().toIntOrNull() != null) {
+                val seconds = newValue.toString()
                 lifecycleScope.launch {
-                    if (apiVM.service?.setPir(seconds)!!.seconds == seconds){
-                        true
+                    val t = apiVM.service?.setMotion(seconds.toInt())!!.motion
+                    // set value to preference manually, as this doesn't really work with coroutines
+                    if(t == seconds.toInt()){
+                        prefEditor.putString("pir_signature", seconds)
+                        prefEditor.commit()
                     }
                 }
             }
@@ -56,11 +81,6 @@ class SettingsFragment : PreferenceFragmentCompat() {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             true
         }
-
-
-
-
-
 
     }
 

@@ -29,6 +29,6 @@ data class StatesProperty(
 )
 
 // delay value in seconds for PIR motion detector
-data class PirProperty(
-    @Json(name = "SECONDS") val seconds: Int
+data class MotionProperty(
+    @Json(name = "MOTION") val motion: Int
 )

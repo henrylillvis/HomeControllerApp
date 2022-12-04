@@ -25,10 +25,10 @@ interface HomeApiPaths {
     @GET("/logs")
     suspend fun getLogs(): List<LogProperty>
 
-    @GET("/pir")
-    suspend fun getPir(): PirProperty
+    @GET("/motion")
+    suspend fun getMotion(): MotionProperty
 
-    @PUT("/pir/{seconds}")
-    suspend fun setPir(@Path(value="seconds") seconds: Int): PirProperty
+    @PUT("/motion/{seconds}")
+    suspend fun setMotion(@Path(value="seconds") seconds: Int): MotionProperty
 }
 
