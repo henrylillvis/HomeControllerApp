@@ -32,10 +32,14 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
         val prefEditor = sharedPreferences.edit()
         lifecycleScope.launch {
+            try{
             val t = apiVM.service?.getMotion()!!.motion
             // set value to preference manually, as this doesn't really work with coroutines
             prefEditor.putString("pir_signature", t.toString())
             prefEditor.commit()
+        }
+            catch (e:Exception){
+            }
         }
     }
 

@@ -13,6 +13,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Base64.encodeToString
 import android.util.Log.d
 import android.view.LayoutInflater
 import android.view.View
@@ -33,9 +34,12 @@ import com.example.androidapp.network.StatesProperty
 import com.example.androidapp.network.WeatherProperty
 import kotlinx.coroutines.*
 import java.io.*
+import android.util.Base64
+
 
 class HomeFragment : Fragment() {
-
+    private val sharedPreferences =
+        PreferenceManager.getDefaultSharedPreferences(HomeController.appContext)
     private lateinit var binding: FragmentHomeBinding
     private var home = ""
     private var weather: WeatherProperty? = null
@@ -43,7 +47,8 @@ class HomeFragment : Fragment() {
     private val apiVM: HomeApi by activityViewModels()
     private var searching = false
     private val _response = MutableLiveData<String>()
-    private var Sipuli: Bitmap ? = null
+    private var Sipuli: Bitmap? = null
+    private var Bytemappi = ""
 
     companion object {
         private const val CAMERA_PERMISSION_CODE = 1
@@ -54,6 +59,22 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+
+        val prefEditor = sharedPreferences.edit()
+        lifecycleScope.launch {
+            try {
+                val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(HomeController.appContext)
+
+                Bytemappi = sharedPreferences.getString("pic_signature", "").toString()
+
+                if( Bytemappi !="") {
+                    val b = Base64.decode(Bytemappi, Base64.DEFAULT)
+                    Sipuli = BitmapFactory.decodeByteArray (b, 0, b.count())
+                    binding.homeImage.setImageBitmap(Sipuli)
+                }
+            } catch (e: Exception) {
+            }
+        }
     }
 
     override fun onCreateView(
@@ -72,25 +93,24 @@ class HomeFragment : Fragment() {
             if (ContextCompat.checkSelfPermission(
                     requireContext(),
                     Manifest.permission.CAMERA
-                 ) == PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(requireContext(),
+                ) == PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(
+                    requireContext(),
                     Manifest.permission.WRITE_EXTERNAL_STORAGE
                 ) == PackageManager.PERMISSION_GRANTED
             ) {
-                val permission = arrayOf(Manifest.permission.CAMERA,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                val permission = arrayOf(
+                    Manifest.permission.CAMERA,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
+                )
                 requestPermissions(permission, 112)
                 openCamera()
             } else {
                 ActivityCompat.requestPermissions(
                     requireContext() as Activity,
-                    arrayOf(Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE),
                     CAMERA_PERMISSION_CODE
                 )
             }
-        }
-        if (savedInstanceState != null){
-            Sipuli = savedInstanceState.getParcelable("uri");
-            binding.homeImage.setImageBitmap(Sipuli)
         }
         /**
          * Navigointi
@@ -113,7 +133,7 @@ class HomeFragment : Fragment() {
     private fun openCamera() {
         val resolver: ContentResolver = requireContext().getContentResolver()
         val values = ContentValues()
-        values.put(MediaStore.Images.Media.DISPLAY_NAME,"HOME")
+        values.put(MediaStore.Images.Media.DISPLAY_NAME, "HOME")
         values.put(MediaStore.Images.Media.TITLE, "Koti kuva")
         values.put(MediaStore.Images.Media.DESCRIPTION, "Kakkaa tuulettimeen")
         image_uri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
@@ -126,18 +146,32 @@ class HomeFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         try {
             if (requestCode == IMAGE_CAPTURE_CODE && resultCode == RESULT_OK) {
-                Sipuli = uriToBitmap(image_uri!!)!!
+                val Sipuli = uriToBitmap(image_uri!!)!!
                 binding.homeImage.setImageBitmap(Sipuli)
+
+                val baos = ByteArrayOutputStream()
+                Sipuli.compress(Bitmap.CompressFormat.JPEG, 100, baos)
+                val b = baos.toByteArray()
+                Bytemappi = Base64.encodeToString(b, Base64.DEFAULT)
+                val sharedPreferences =
+                    PreferenceManager.getDefaultSharedPreferences(HomeController.appContext)
+
+                val prefEditor = sharedPreferences.edit()
+                lifecycleScope.launch {
+                    try {
+                        prefEditor.putString("pic_signature", Bytemappi.toString())
+                        prefEditor.commit()
+
+                    } catch (e: Exception) {
+                        Toast.makeText(context, "${e.message}", Toast.LENGTH_LONG).show()
+                    }
+                }
             }
         } catch (e: Exception) {
             Toast.makeText(context, "${e.message}", Toast.LENGTH_LONG).show()
         }
     }
-    override fun onSaveInstanceState(outState: Bundle) {
-        if (Sipuli != null) {
-            outState.putParcelable("uri", Sipuli)
-        }
-    }
+
     private fun uriToBitmap(selectedFileUri: Uri): Bitmap? {
         try {
             val resolver: ContentResolver = requireContext().getContentResolver()

@@ -51,12 +51,16 @@ class MainActivity : AppCompatActivity() {
     fun handlePrefs(sharedPreferences: SharedPreferences){
         val prefEditor = sharedPreferences.edit()
         lifecycleScope.launch {
-            val t = apiVM.service?.getMotion()!!.motion
-            // set value to preference manually, as this doesn't really work with coroutines
-            prefEditor.putString("pir_signature", t.toString())
-            prefEditor.commit()
-        }
+            try {
+                val t = apiVM.service?.getMotion()!!.motion
+                // set value to preference manually, as this doesn't really work with coroutines
+                prefEditor.putString("pir_signature", t.toString())
+                prefEditor.commit()
 
+            } catch (e:Exception){
+
+            }
+        }
         val darkTheme = sharedPreferences.getBoolean("theme", false)
         if (darkTheme)
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
