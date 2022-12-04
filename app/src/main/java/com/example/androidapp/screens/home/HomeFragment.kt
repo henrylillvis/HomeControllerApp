@@ -1,47 +1,38 @@
 package com.example.androidapp.screens.home
 
 
+import android.Manifest
 import android.app.Activity
 import android.app.Activity.RESULT_OK
+import android.content.ContentResolver
 import android.content.ContentValues
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log.d
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.content.FileProvider
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.*
 import androidx.navigation.findNavController
 import androidx.preference.PreferenceManager
 import com.example.androidapp.HomeController
 import com.example.androidapp.R
 import com.example.androidapp.databinding.FragmentHomeBinding
+import com.example.androidapp.network.HomeApi
 import com.example.androidapp.network.StatesProperty
 import com.example.androidapp.network.WeatherProperty
-import androidx.lifecycle.*
-import com.example.androidapp.network.HomeApi
 import kotlinx.coroutines.*
-import java.io.ByteArrayOutputStream
-import java.io.File
-import java.io.FileOutputStream
-import java.io.OutputStream
-import java.lang.Exception
+import java.io.*
 
 class HomeFragment : Fragment() {
 
@@ -52,10 +43,13 @@ class HomeFragment : Fragment() {
     private val apiVM: HomeApi by activityViewModels()
     private var searching = false
     private val _response = MutableLiveData<String>()
+    private var Sipuli: Bitmap ? = null
 
     companion object {
         private const val CAMERA_PERMISSION_CODE = 1
-        private const val CAMERA_REQUEST_CODE = 2
+        private var image_uri: Uri? = null
+        private val IMAGE_CAPTURE_CODE = 654
+
     }
 
     override fun onResume() {
@@ -67,7 +61,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater)
-        //binding.lifecycleOwner = this
 
         binding.refreshButton.setOnClickListener {
             if (!searching) {
@@ -78,19 +71,26 @@ class HomeFragment : Fragment() {
         binding.cameraButton.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
                     requireContext(),
-                    android.Manifest.permission.CAMERA
+                    Manifest.permission.CAMERA
+                 ) == PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(requireContext(),
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE
                 ) == PackageManager.PERMISSION_GRANTED
             ) {
-                //camera intent
-                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                startActivityForResult(intent, CAMERA_REQUEST_CODE)
+                val permission = arrayOf(Manifest.permission.CAMERA,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                requestPermissions(permission, 112)
+                openCamera()
             } else {
                 ActivityCompat.requestPermissions(
                     requireContext() as Activity,
-                    arrayOf(android.Manifest.permission.CAMERA),
+                    arrayOf(Manifest.permission.CAMERA,Manifest.permission.WRITE_EXTERNAL_STORAGE),
                     CAMERA_PERMISSION_CODE
                 )
             }
+        }
+        if (savedInstanceState != null){
+            Sipuli = savedInstanceState.getParcelable("uri");
+            binding.homeImage.setImageBitmap(Sipuli)
         }
         /**
          * Navigointi
@@ -106,19 +106,50 @@ class HomeFragment : Fragment() {
         }
         setHome()
         getData()
+
         return binding.root
+    }
+
+    private fun openCamera() {
+        val resolver: ContentResolver = requireContext().getContentResolver()
+        val values = ContentValues()
+        values.put(MediaStore.Images.Media.DISPLAY_NAME,"HOME")
+        values.put(MediaStore.Images.Media.TITLE, "Koti kuva")
+        values.put(MediaStore.Images.Media.DESCRIPTION, "Kakkaa tuulettimeen")
+        image_uri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
+        val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri)
+        startActivityForResult(cameraIntent, IMAGE_CAPTURE_CODE)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         try {
-            if (requestCode == CAMERA_REQUEST_CODE) {
-                val photo = data!!.extras!!["data"] as Bitmap?
-                binding.homeImage.setImageBitmap(photo)
+            if (requestCode == IMAGE_CAPTURE_CODE && resultCode == RESULT_OK) {
+                Sipuli = uriToBitmap(image_uri!!)!!
+                binding.homeImage.setImageBitmap(Sipuli)
             }
         } catch (e: Exception) {
             Toast.makeText(context, "${e.message}", Toast.LENGTH_LONG).show()
         }
+    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        if (Sipuli != null) {
+            outState.putParcelable("uri", Sipuli)
+        }
+    }
+    private fun uriToBitmap(selectedFileUri: Uri): Bitmap? {
+        try {
+            val resolver: ContentResolver = requireContext().getContentResolver()
+            val parcelFileDescriptor = resolver.openFileDescriptor(selectedFileUri, "r")
+            val fileDescriptor: FileDescriptor = parcelFileDescriptor!!.fileDescriptor
+            val image = BitmapFactory.decodeFileDescriptor(fileDescriptor)
+            parcelFileDescriptor.close()
+            return image
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return null
     }
 
     private fun getData() {
